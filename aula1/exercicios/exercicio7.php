@@ -1,6 +1,6 @@
 <?php
 
-$salario = 1000;
+$salario = 100;
 
 if ($salario >= 300) {
     $novoSalario = $salario + ($salario * 30) / 100;
