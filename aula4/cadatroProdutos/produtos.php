@@ -20,9 +20,9 @@ if (isset($_POST['codigo'])) {
     $precoVenda = $_POST['precoVenda'];
 
     if ($nome == "emerson") {
-        echo "Não é permitido cadastrar produtos com esse nome";
+        echo '<div class="alert alert-error">Não é permitido cadastrar produtos com esse nome</div>';
     } elseif (verificaCodigo($codigo)) {
-        echo "Código já cadastrado";
+        echo '<div class="alert alert-error">Código já cadastrado</div>';
     } else {
         $_SESSION['produtos'][] = array(
             'codigo' => $codigo,
@@ -32,81 +32,105 @@ if (isset($_POST['codigo'])) {
             'precoVenda' => $precoVenda
         );
 
-        echo "Produto cadastro com sucesso!!";
+        echo '<div class="alert alert-success">Produto cadastro com sucesso!!</div>';
     }
 }
 
 if (isset($_GET['acao']) and $_GET['acao'] == 'excluir') {
     unset($_SESSION['produtos'][$_GET['id']]);
-    echo $_GET['id'];
-    echo "Produto removido com sucesso!";
+    echo '<div class="alert alert-success">Produto removido com sucesso!</div>';
 }
 ?>
 
 <html>
-    <header>
+    <head>
         <title>Cadastro de produtos</title>
         <meta charset="UTF-8"/>
-    </header>
+        <link rel="stylesheet" href="bootstrap/css/bootstrap.css" />
+        <link rel="stylesheet" href="bootstrap/css/bootstrap-responsive.css" />
+    </head>
     <body>
-        <form method="post" action="">
-            <fieldset>
-                <legend>Cadastrar novo produto</legend>
+        <div class="container">
+            <div class="row-fluid">
+                <div class="span6">
+                    <form method="post" class="form form-horizontal well" action="">
+                        <fieldset>
+                            <legend>Cadastrar novo produto</legend>
+                            <div class="control-group">
+                                <label class="control-label" for="codigo">Codigo</label>
+                                <div class="controls">
+                                    <input type="text" id="codigo" name="codigo" required/>
+                                </div>
+                            </div>
 
-                <label>Codigo</label>
-                <input type="text" name="codigo" required/>
-                <br/>
+                            <div class="control-group">
+                                <label class="control-label">Nome</label>
+                                <div class="controls">
+                                    <input type="text" name="nome" required/>
+                                </div>
+                            </div>
 
-                <label>Nome</label>
-                <input type="text" name="nome" required/>
-                <br/>
+                            <div class="control-group">
+                                <label class="control-label">validade</label>
+                                <div class="controls">
+                                    <input type="text" name="validade" required/>
+                                </div>
+                            </div>
 
-                <label>validade</label>
-                <input type="text" name="validade" required/>
-                <br/>
+                            <div class="control-group">
+                                <label class="control-label">preço de compra</label>
+                                <div class="controls">
+                                    <input type="text" name="precoCompra" required/>
+                                </div>
+                            </div>
 
-                <label>preço de compra</label>
-                <input type="text" name="precoCompra" required/>
-                <br/>
+                            <div class="control-group">
+                                <label class="control-label">preço de venda</label>
+                                <div class="controls">
+                                    <input type="text" name="precoVenda" required/>
+                                </div>
+                            </div>
 
-                <label>preço de venda</label>
-                <input type="text" name="precoVenda" required/>
-                <br/>
+                            <input type="submit" value="cadastrar" />
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+            <div class="row-fluid"
 
-                <input type="submit" value="cadastrar" />
-            </fieldset>
-        </form>
-        <br/>
+                 <div class="span12">
 
-        <h3>Produtos cadastrados</h3>
-        <table border="1" cellspacing="0" cellpadding="2">
-            <thead>
-                <tr>
-                    <th>Código</th>
-                    <th>Nome</th>
-                    <th>Validade</th>
-                    <th>Preco Compra</th>
-                    <th>Preco Venda</th>
-                    <th>Ações</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php if (isset($_SESSION['produtos'])) : ?>
-                    <?php
-                    foreach ($_SESSION['produtos'] as $codigo => $produto) {
-                        echo "<tr>";
-                        echo "<td>" . $produto['codigo'] . "</td>";
-                        echo "<td>" . $produto['nome'] . "</td>";
-                        echo "<td>" . $produto['validade'] . "</td>";
-                        echo "<td>" . $produto['precoCompra'] . "</td>";
-                        echo "<td>" . $produto['precoVenda'] . "</td>";
-                        echo '<td><a href="produtos.php?acao=excluir&id=' . $codigo . '">excluir</a></td>';
-                        echo "</tr>";
-                    }
-                    ?>
-                <?php endif; ?>
-            </tbody>
-        </table>
+                    <h3>Produtos cadastrados</h3>
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Código</th>
+                                <th>Nome</th>
+                                <th>Validade</th>
+                                <th>Preco Compra</th>
+                                <th>Preco Venda</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php if (isset($_SESSION['produtos'])) : ?>
+                                <?php
+                                foreach ($_SESSION['produtos'] as $codigo => $produto) {
+                                    echo "<tr>";
+                                    echo "<td>" . $produto['codigo'] . "</td>";
+                                    echo "<td>" . $produto['nome'] . "</td>";
+                                    echo "<td>" . $produto['validade'] . "</td>";
+                                    echo "<td>" . $produto['precoCompra'] . "</td>";
+                                    echo "<td>" . $produto['precoVenda'] . "</td>";
+                                    echo '<td><a href="produtos.php?acao=excluir&id=' . $codigo . '">excluir</a></td>';
+                                    echo "</tr>";
+                                }
+                                ?>
+                            <?php endif; ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
     </body>
 </html>
 
