@@ -51,6 +51,13 @@
                 case '' : include './incial.php';
                     break;
                 case 'conta' : include './conta/index.php';
+                    break;
+                case 'cadastroConta' : include './conta/cadastrar.php';
+                    break;
+                case 'excluirConta' : include './conta/excluir.php';
+                    break;
+                case 'editarConta' : include './conta/editar.php';
+                    break;
             }
             ?>
         </div>
