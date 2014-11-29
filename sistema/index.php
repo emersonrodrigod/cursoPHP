@@ -21,52 +21,40 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                    <a class="brand" href="#">Controle Financeiro</a>
+                    <a class="brand" href="index.php">Controle Financeiro</a>
                     <div class="nav-collapse collapse navbar-responsive-collapse">
                         <ul class="nav">
-                            <li class="active"><a href="#">Painel de Controle</a></li>
-                            <li><a href="#">Lançamentos</a></li>
+                            <li class="active"><a href="index.php">Painel de Controle</a></li>
+                            <li><a href="">Lançamentos</a></li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cadastros <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="#">Categorias</a></li>
-                                    <li><a href="#">Contas</a></li>
+                                    <li><a href="index.php?pagina=conta">Contas</a></li>
                                     <li><a href="#">Usuários</a></li>
                                 </ul>
                             </li>
+                            <li><a href="seguranca/sair.php">Sair</a></li>
                         </ul>
                     </div><!-- /.nav-collapse -->
                 </div>
             </div><!-- /navbar-inner -->
         </div>
-        
+
         <div style="margin-top: 80px;"></div>
-        
+
         <div id="conteudo" class="container">
-            <table class="table table-bordered table-striped table-hover">
-                <thead>
-                    <tr>
-                        <th>Conta</th>
-                        <th width="15%">Saldo</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Conta ITAU</td>
-                        <td>- R$50,00</td>
-                    </tr>
-                    <tr>
-                        <td>Conta HSBC</td>
-                        <td>+ R$ 1.000,00</td>
-                    </tr>
-                </tbody>
-            </table>
-            
-            <div id="total" class="pull-right">
-                <h3>+ R$ 950,00</h3>
-            </div>
+            <?php
+            $pagina = (isset($_GET['pagina']) ? $_GET['pagina'] : '');
+
+            switch ($pagina) {
+                case '' : include './incial.php';
+                    break;
+                case 'conta' : include './conta/index.php';
+            }
+            ?>
         </div>
-        
+
         <footer class="container">
             <hr/>
             <h5>Sistema desenvolvido no curso de PHP do IVB</h5>
