@@ -13,6 +13,8 @@ $resultado = mysql_query($sql);
     </head>
     <body>
 
+        <a href="cadastro.html">Incluir um produto</a>
+        
         <table border="1">
             <thead>
                 <tr>
@@ -21,6 +23,7 @@ $resultado = mysql_query($sql);
                     <th>Validade</th>
                     <th>Preço de Compra</th>
                     <th>Preço de Venda</th>
+                    <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
@@ -31,6 +34,16 @@ $resultado = mysql_query($sql);
                         <td><?php echo $linha['validade']; ?></td>
                         <td><?php echo $linha['precoCompra']; ?></td>
                         <td><?php echo $linha['precoVenda']; ?></td>
+                        <td>
+                            <a href="editar.php?codigo=<?php echo $linha['codigo']; ?>">
+                                Editar
+                            </a>
+                            
+                            <a href="excluir.php?codigo=<?php echo $linha['codigo']; ?>">
+                                Excluir
+                            </a>
+                            
+                        </td>
                     </tr>
                 <?php endwhile; ?>
             </tbody>
