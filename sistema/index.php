@@ -7,6 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="bootstrap/css/bootstrap.css" />
         <link rel="stylesheet" href="bootstrap/css/bootstrap-responsive.css" />
+        <link rel="stylesheet" href="css/estilos.css" />
 
         <script src="js/jquery.js"></script>
         <script src="bootstrap/js/bootstrap.js"></script>
@@ -25,11 +26,11 @@
                     <div class="nav-collapse collapse navbar-responsive-collapse">
                         <ul class="nav">
                             <li class="active"><a href="index.php">Painel de Controle</a></li>
-                            <li><a href="">Lançamentos</a></li>
+                            <li><a href="index.php?pagina=lancamento">Lançamentos</a></li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cadastros <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#">Categorias</a></li>
+                                    <li><a href="index.php?pagina=categoria">Categorias</a></li>
                                     <li><a href="index.php?pagina=conta">Contas</a></li>
                                     <li><a href="#">Usuários</a></li>
                                 </ul>
@@ -57,6 +58,18 @@
                 case 'excluirConta' : include './conta/excluir.php';
                     break;
                 case 'editarConta' : include './conta/editar.php';
+                    break;
+                case 'categoria' : include './categoria/index.php';
+                    break;
+                case 'cadastroCategoria' : include './categoria/cadastrar.php';
+                    break;
+                case 'editarCategoria' : include './categoria/editar.php';
+                    break;
+                case 'excluirCategoria' : include './categoria/excluir.php';
+                    break;
+                case 'lancamento' : include './lancamento/index.php';
+                    break;
+                case 'cadastroLancamento' : include './lancamento/cadastrar.php';
                     break;
             }
             ?>
