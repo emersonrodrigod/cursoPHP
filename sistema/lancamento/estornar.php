@@ -1,15 +1,14 @@
 <?php
+
 require 'conexao/conecta.php';
 
+//Recupera o registro para alteração
 $id = $_GET['id'];
 
-$sql = "delete from lancamento where id = $id";
-
+$sql = "update lancamento set situacao = 'A' where id = $id";
 $resultado = mysql_query($sql);
 
-if($resultado){
+if ($resultado) {
     header("location:index.php?pagina=lancamento");
-}else {
-    echo "Erro ao excluir o registro: " . mysql_error(); 
 }
 ?>

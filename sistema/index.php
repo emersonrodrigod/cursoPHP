@@ -71,6 +71,14 @@
                     break;
                 case 'cadastroLancamento' : include './lancamento/cadastrar.php';
                     break;
+                case 'pagarLancamento' : include './lancamento/pagar.php';
+                    break;
+                case 'estornarLancamento' : include './lancamento/estornar.php';
+                    break;
+                case 'excluirLancamento' : include './lancamento/excluir.php';
+                    break;
+                case 'lanc' : include './lancamento/lancamento.php';
+                    break;
             }
             ?>
         </div>
